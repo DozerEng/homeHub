@@ -1,4 +1,4 @@
-# homeHum
+# homeHub
 NodeJS web server for hosting project portfolio and smart home hub.
 Upgrade of previous projectPortfolio project. Adding more efficient page navigation using handlebars and adding JWT for secure login to access an array of smart home devices.
 
