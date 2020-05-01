@@ -11,6 +11,9 @@ const smartHomeRoutes = require("./api/routes/smartHome");
 const otherProjectsRoutes = require("./api/routes/otherProjects");
 const printsRoutes = require("./api/routes/prints");
 const userRoutes = require("./api/routes/user");
+const projectsRoutes = require("./api/routes/projects");
+const softwareRoutes = require("./api/routes/software");
+const otherRoutes = require("./api/routes/other");
 
 mongoose.connect("mongodb+srv://BBBServer:" + process.env.MONGO_ATLAS_PW + "@bbbserver-fybr1.mongodb.net/test?retryWrites=true&w=majority", 
     {
@@ -47,6 +50,9 @@ app.use((req, res, next) => {
 
 //Routes to be handled
 app.use("/content", contentRoutes);
+app.use("/projects", projectsRoutes);
+app.use("/software", softwareRoutes);
+app.use("/other", otherRoutes);
 app.use("/devices", devicesRoutes);
 app.use("/otherProjects", otherProjectsRoutes);
 app.use("/prints", printsRoutes);

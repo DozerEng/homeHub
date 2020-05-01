@@ -69,47 +69,6 @@ body {
     text-align: center;
     margin: 0;
 }
-/*
-Mobile Stylings
-*/
-
-h1 {
-    color: dodgerblue;
-    font-size: 2.0rem;
-    margin: 0.25rem 0 0.25rem 0;
-}
-h2 {
-    color: goldenrod;
-    font-size: 1.5rem;
-    margin: 0.25rem 0 0.25rem 0;
-}
-h3 {
-    color: red;
-    font-size: 1.25rem;
-    margin: 0.25rem 0 0.25rem 0;
-}
-h4 {
-    color: rgb(18, 219, 18);
-    font-size: 1.25rem;
-    margin: 0.25rem 0 0.25rem 0;
-} 
-h5 {
-    color: rgb(207, 66, 0);
-    font-size: 1.25rem;
-    margin: 0.25rem 0 0.25rem 0;
-} 
-h6 {
-    color: goldenrod;
-    font-size: 1.25rem;
-    margin: 0.25rem 0 0.25rem 0;
-}
-p {
-    text-align: center;
-    color: white;
-    font-size: 1.1rem;
-    padding: 0rem 0.5rem;
-    margin: 0.5rem;
-} 
 /* 
 Images - See login for site background styles
 */
@@ -162,7 +121,8 @@ Navigation Panel
     cursor: pointer ;
 } 
 .mainNavBar {
-    background-color: rgb(40,40,40);
+    
+    background-image: linear-gradient(to right, rgb(150,150,150), rgb(50,50,50), rgb(40,40,40), rgb(40,40,40));
     overflow: hidden;
      
 }
@@ -206,6 +166,10 @@ Navigation Panel
     background-color: rgb(150, 0, 0) !important;
     color: white !important;
 }
+.plainLink {
+    text-decoration: none;
+    color: inherit;
+}
 
 
 
@@ -213,14 +177,17 @@ Navigation Panel
 Content
 */
 .contentA {
+    padding: 20px;
     margin: 20px auto;
     background-color: rgb(30,40,30);
 }
 .contentB {
+    padding: 20px;
     margin: 20px auto;
 }
 .mainWindow {
     margin: 20px;
+    padding: 20px;
     border-radius: 25px;
     background-color: grey;
 }
@@ -288,6 +255,41 @@ SlideShow Styles
 .activeDot, .dot:hover {
 background-color: cornflowerblue;
 }
+
+
+/*
+Mobile Stylings
+*/
+
+h1 {
+    color: dodgerblue;
+    font-size: 2.0rem;
+}
+h2 {
+    color: goldenrod;
+    font-size: 1.5rem;
+}
+h3 {
+    color: red;
+    font-size: 1.25rem;
+}
+h4 {
+    color: rgb(18, 219, 18);
+    font-size: 1.25rem;
+} 
+h5 {
+    color: rgb(207, 66, 0);
+    font-size: 1.25rem;
+} 
+h6 {
+    color: goldenrod;
+    font-size: 1.25rem;
+}
+p {
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+} 
 /*
 Desktop Styles
 */

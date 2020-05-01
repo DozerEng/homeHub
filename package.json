@@ -1,7 +1,7 @@
 {
-  "name": "projectportfolio",
-  "version": "0.1.2",
-  "description": "A project portfolio and smart home hub using Node.js RESTful API",
+  "name": "homeHub",
+  "version": "1.0.1",
+  "description": "A project portfolio and smart home hub",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,12 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DozerEng/projectPortfolio.git"
+    "url": "https://github.com/DozerEng/homeHub.git"
   },
   "keywords": [
     "node",
-    "restful",
-    "api"
+    "express",
+    "REST",
+    "RESTful",
+    "api",
+    "MongoDB",
+    "Mongoose"
   ],
   "author": "Michael Pillon",
   "license": "ISC",

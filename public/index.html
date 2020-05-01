@@ -2,391 +2,126 @@
 <html>
 <head>
     <!--
-/*************************************************************************
-# Project Name: projectPortfolio
-# Author: Michael Pillon
-# Description:  SPA using NodeJS, expressjs, mongoDB/mongoose, running as a RESTful API server.
-#			    Designed to expand on the Smart Life capstone into a functional
-#               smart home setup. 
-#               Features a project portfolio of technical projects and 3D prints.
-#       
-#       V1.0: April 25th, 2020
-#           Began Development of a more modern functional site design containing:
-#               1) Semi-Interactive Project Portfolio
-#               2) Smart Home Hub, full device integration
-#           Full graphic redesign based on functional components of V0
-#               and current design o
-#			    
-# 
-//*************************************************************************/
-    -->
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: 
+    Author: Michael Pillon
+    Description: 
     
+    Notes: 
+    
+    *************************************************************************
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pillon Engineering</title>
-
+    
     <!-- Include the jquery library -->
     <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
 
-
-        <!-- Include the processing.js library -->
+    <!-- Include the processing.js library -->
     <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
 
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/navBar.js"></script>
+    <script src="/components/utilities.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
+        #peDotCom {
+            max-width: 80%;
+        }
+        #imageSmartLifeLogo {
+            max-width: 80%;
+        }
     
+    </style>
+
 </head>
 <body>
     <div class="wrapper">
 
-        <div class="logo">                
-            <img 
-            id="imageLogo",
-            src='/images/pillonEngLogo1.png',
-            alt='Pillon Engineering'>
-        </div>
-
-
-        <!-- 
-            NOT UPDATED FOR NEW SITE: 
-            pop ups-->
-        <div class="backgroundCover" onclick="popUpButton('close','currentPopUp')"></div>
-        <div id="imageContainer" onclick="popUpButton('close', 'imageContainer')">
-            <img 
-            id="imagePopUp"
-            onclick="popUpButton('close','imagePopUp')">
-        </div>
-
-        <!-- EO pop ups-->
-
-        
-        <div class="headerMain"> 
-            
-            <div class="mainNavBar">
-                
-                <img 
-                id="imagePELogo",
-                src='/images/pELogo1.png',
-                alt='PE'>
-                            
-                <img id="imageSearchLogo"
-                    src='/images/magGlass1.png'
-                    alt='Mag Glass'
-                    onclick="toggleSearchBar()">
-                
-                <a href="javascript:void(0)"
-                    class="menuButton" 
-                    id="menuButton" 
-                    onclick="toggleMenu()"
-                    >&#9776</a>
-                   
-            </div>
-            
-
-            <div class="navBar">
-
-                <a href="javascript:void(0)" 
-                    id="other"  
-                    onmouseover="navigateSubOn(this.id)" 
-                    onmouseout="navigateSubOff(this.id)" 
-                    onclick="navigateMain('.mainContent', this.id)" 
-                    >Other</a>
-                
-                <a href="javascript:void(0)" 
-                    id="software" 
-                    onmouseover="navigateSubOn(this.id)" 
-                    onmouseout="navigateSubOff(this.id)" 
-                    onclick="navigateMain('.mainContent', this.id)"
-                    >Software</a>
-                
-                <a href="/projects/projects.html" 
-                    id="projects"
-                    onmouseover="navigateSubOn(this.id)"
-                    onmouseout="navigateSubOff(this.id)" 
-                    onclick="navigateMain('.mainContent', this.id)"
-                    >Projects</a>
-                
-                <a href="javascript:void(0)" 
-                    id="home"
-                    onclick="navigateMain('.mainContent', this.id)"
-                    >Home</a>
-
-            </div>
-            <div class="subNavBar">
-                
-                <div class="otherPages" 
-                    onmouseover="navigateSubOn('other')"
-                    onmouseout="navigateSubOff('other')">
-
-                    <a href="javascript:void(0)"
-                        id="otherProjects"    
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Other Projects</a>
-                    <a href="javascript:void(0)" 
-                        id="prints"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >3D Prints</a>
-                </div>
-
-                <div class="softwarePages"
-                    onmouseover="navigateSubOn('software')"
-                    onmouseout="navigateSubOff('software')">
-                    <a href="javascript:void(0)" 
-                        id="server"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Server</a>
-                    <a href="javascript:void(0)" 
-                        id="sudoku"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Sudoku ( C )</a>
-                    <a href="javascript:void(0)" 
-                        id="snake"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Snake ( Javascript )</a>
-                </div>
-                
-                <div class="projectsPages"
-                    onmouseover="navigateSubOn('projects')"
-                    onmouseout="navigateSubOff('projects')">
-                    <a href="javascript:void(0)" 
-                        id="server"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Server</a>
-                    <a href="javascript:void(0)" 
-                        id="ledDisplay"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >LED Display</a>
-                    <a href="/projects/piCamera.html" 
-                        id="piCamera"
-                        onclick="navigateMain('.mainContent', this.id)"
-                        >Pi Camera</a>
-                    <a href="/projects/threeDPrinter.html" 
-                        onclick="navigateMain('.mainContent', 'prints')"
-                        >3D Printer</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="searchBar"> 
-            <p>Search</p>
-        </div>
-
         <div class="mainContent"> 
-            <p>Main Content</p>
-        </div>
-
-        <div class="sideBar">
-
+            <div class="mainWindow">
+                <br><br><br>
+            
+                <h4>Welcome to</h4>
+                <img id="peDotCom" src="/images/pillonEngDotCom.png">
+                <br><br><br><br><br>
+                <div class="mainP">
+                    <p>Pillon Engineering is a central point for the engineering work by me, Michael Pillon!</p>
+                    <p>My current love for technologhy and engineering has not always been my career focus, but it has really become the main focus of my career and personal interests. </p>
+                    <p> - Professional experience with modern network technologies, wireless communications, and various other modern technology.</p>
+                    <p> - Hobbies related to electronics and programming.</p>
+                </div>
+                <br><br><br>
+                
+            </div>
         </div>
 
         <div class="content"> 
-            <h3>Content</p>
+                <!-- Content Element 1 -->
+            <div class='contentA'>
+                <div class='contentElementA'>
+                    <br><br><br>
+                    <img 
+                        id="imageSmartLifeLogo"
+                        src="/images/smartLifeLogo.png">
+                    <p>
+                        This project started as a capstone project while taking an Electrical and Electronics Engineering Technology program at Fanshaw College. The project involved designing and building 3 IoT devices: A smart light-switch, a smart door-lock, and a smart power bar. I purchased a DIY 3D printer and amidst a constant struggle to get reliable and high quality prints, I learned 3D design in 123D Design and Fusion 360 and have designed and built numerous things. (See "Projects -> 3D Printer" OR "Other -> 3D Prints" pages)
+                    </p>
+                    <br>
+                    <p>
+                        The main learning outcomes from this project was a hands on learning experience with linux, network infrastructure, 3D design/printing, and coding. These devices ran on Raspberry Pi Zero W's and were running NodeJS applications on Raspian OS and were the foundations for the server running this web page.
+                    </p>
+                    <br>
+                    <p>
+                        These devices were a first step on a journey. The web design was extremely poor, the hardware looked crammed into oversized cases
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+
+                <!-- Content Element 2 -->
+            <div class='contentB'>
+                <div class='contentElementB'>
+                    <br><br><br>
+                    <p>
+                        Other Dynamic Content 2 
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+
+                <!-- Content Element 3 -->
+            <div class='contentA'> 
+                <div class='contentElementA'>
+                    <br><br><br>
+                    <p>
+                        Other Dynamic Content 3
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+
         </div>
-        
-        <div class="footer">     
-            <br><br><br><br><br> 
-            <p>© 2020 - Pillon Engineering</p>
-            <br><br>
-            <a href="javascript:void(0)" 
-            id="contact" 
-            onclick="navigateMain('.mainContent', this.id)"
-            >Contact Info</a>
-            <br><br><br><br><br><br><br><br><br> 
-        </div>
+
+        <!-- Template: Required Components (See template.html) -->
+        <div class="logo"></div>
+        <div class="headerMain"></div>
+        <div class="searchBar"></div>
+        <div class="sideBar"></div>
+        <div class="footer"></div>
     </div>
 
 <script>
+//Enter Page Specific Script Info Here
 
-    //Window Scroll Animation Handling
-    var prevYOffset = window.pageYOffset;
-    scrollAdjust = () => {
-        let currentYOffset = window.pageYOffset;
-        if(currentYOffset <= 75) {
-            $("#imagePELogo").css("opacity", "0.0");
-            $("#imageSearchLogo").css("margin-left", "10px");
-        } else {
-            $("#imageSearchLogo").css("margin-left", "70px");
-            $("#imagePELogo").css("opacity", "1.0");
-        }
-
-        prevYOffset = currentYOffset;
-    }//EO Window Scroll Animation Handling
-
-    /*
-        Handling window resizing.
-        - handles navBar visibilities
-    */
-    var prevWidth = $(window).width();
-    adjustMenuElements = () => {
-        let currentWidth = $(window).width();
-        
-        // Set Mobile element display settings
-        if(currentWidth <= 900) {
-            //Next 2 should be in opposition
-            $("#menuButton").css("display", "block");
-            $(".navBar").css("display", "none");
-            $(".softwarePages").css("display", "none");
-            $(".projectsPages").css("display", "none");
-            $(".otherPages").css("display", "none");
-
-            $(".navBar").css("background-color", "rgba(0,0,0,0)");
-        } else {
-            //Next 2 should be in opposition
-            $(".navBar").css("display", "block");
-            $("#menuButton").css("display", "none");
-
-            $(".navBar").css("background-color", "rgb(40,40,40)");
-        }
-        $('.searchBar').css('display', 'none');
-        prevWidth = currentWidth;
-    }//EO Window Scroll Animation Handling
-
-    var toggleSearchBar = () => {
-        if($(".searchBar").is(":visible")) {
-            $(".searchBar").css("display", "none");
-            
-        } else {
-            $(".searchBar").css("display", "block");
-        }
-    }
-
-    /*
-        LEGACY CODE
-    */
-
-    // Menu activity Handler
-    toggleMenu = () => {
-        if($("#menuButton").is(":visible")) {
-            if( $(".navBar").is(":visible") ) {
-                $(".navBar").css("display", "none");
-                $(".softwarePages").css("display", "none");
-                $(".projectsPages").css("display", "none");
-                $(".otherPages").css("display", "none");
-            } else {
-            
-                $(".navBar").css("display", "block");
-            }
-        }
-    }
-    //Navigation Bar Links - ToDo cookie to remember page, if that is a good practice
-    navigateMain = (component, page) => {
-        
-        $.ajax({
-            url: "content/" + page + ".html",
-            type: "GET",
-            success: (result, status, xhr) => {                
-                //Handling navBar calls to .mainContent
-                if (component === ".mainContent") {
-                    $(".mainContent").empty();
-                    $(".content").empty();
-                    $(".active").removeClass("active");
-                    $("#" + page).addClass("active");
-                }
-                //Every call:
-                $(component).empty();
-                $(component).append(result);
-                //Clear mobile only menus (<900px)
-                //DEPENDENTANT ON CSS @media size
-                if( $(window).width() < 900) {
-                    $(".navBar").css("display", "none");
-                }
-                
-                $('.searchBar').css('display', 'none');
-            }
-            //ToDo
-            //error handler:
-        });
-    }
-
-    navigateSubOn = (name) => {
-        $("." + name + "Pages").css("display", "block");
-    } 
-    navigateSubOff = (name) => {
-        $(".softwarePages").css("display", "none");
-        $(".projectsPages").css("display", "none");
-        $(".otherPages").css("display", "none");
-    }
-
-
-    //Load login/signup pop up - ToDo Everything + store JWT in cookie
-    popUpButton = (windowAction, popUpName) => {
-
-        var popUpId = "#" + popUpName;
-        var popUpClass = "." + popUpName;
-
-        if(windowAction === 'open') {   
-            $(".backgroundCover").css('display', 'block');
-            if(popUpName.match(/^image/)) {
-                var imgUrl = $(popUpId).attr('src');
-
-                $("#imagePopUp").attr('src', imgUrl);
-
-                var myImg = document.querySelector("#imagePopUp");
-                var realWidth = myImg.naturalWidth;
-                var realHeight = myImg.naturalHeight;
-
-                var windowHeight = $(window).height();
-                var windowWidth = $(window).width();
-
-                if( realHeight/realWidth - windowHeight/windowWidth > 0.0 ) { //realHeight > windowWidth
-                    var imageHeight = 0.8 * windowHeight;
-                    var heightOffset = ((windowHeight - imageHeight) / 2.0 ); 
-                    var widthOffset = (windowWidth - (imageHeight/realHeight)*realWidth ) / 2.0;
-                    $("#imagePopUp").attr('height', imageHeight);
-                    $("#imagePopUp").attr('width', 'auto');
-                    $("#imagePopUp").css('left', widthOffset);
-                    $("#imagePopUp").css('top', heightOffset);
-                } else {
-                    var imageWidth = 0.8 * windowWidth;
-                    var widthOffset = ((windowWidth - imageWidth) / 2.0 ); 
-                    var heightOffset = (windowHeight - (imageWidth/realWidth) * realHeight) / 2.0;
-
-                    $("#imagePopUp").attr('width', imageWidth);
-                    $("#imagePopUp").attr('height', 'auto');                        
-                    $("#imagePopUp").css('left', widthOffset);
-                    $("#imagePopUp").css('top', heightOffset);
-                }
-                $("#imageContainer").css('display', 'block');
-            }
-            else {//login/signup
-                $(popUpId).addClass('currentPopUp');
-                $(popUpId).css('display', 'block');
-            }
-        }
-        else if(windowAction === 'close') {        
-            $(".backgroundCover").css('display', 'none'); 
-            if( $(popUpClass).hasClass('currentPopUp') ) { //click on background
-                $('.currentPopUp').css('display', 'none');
-                popUpId = '#' + $('.currentPopUp').attr("id");
-                $(popUpId).removeClass('currentPopUp');
-
-            } else if (popUpName.match(/^image/)) {//handles click on container and enlarged image
-                $("#imagePopUp").removeAttr('src');
-                $("#imageContainer").css('display', 'none');
-            }
-            else {//login, signup, , on background click
-                $(popUpId).css('display', 'none');
-            }
-        }
-    }
-    
-    /*
-        EO LEGACY CODE
-    */
-
-
-    /*
-    GAME TIME!
-    */
-    $(window).on("scroll", scrollAdjust);
-    $(window).on("resize", adjustMenuElements);
-    $(document).ready( () => {
-        navigateMain('.sideBar', 'sideBar');
-        adjustMenuElements();
-        navigateMain('.mainContent', 'home');
-    });
 </script>
 
 </body>
-    
 </html>

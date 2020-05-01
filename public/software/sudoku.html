@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: Sudoku
+    Author: Michael Pillon
+    Description: Online Sudoku game and downloadable solver.
+    
+    Notes: 
+    
+    *************************************************************************
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include the jquery library -->
+    <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
+
+    <!-- Include the processing.js library -->
+    <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/utilities.js"></script>
+    <script src="/components/navBar.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
+        
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="mainContent"> 
+            <!-- Enter main content elements here -->
+            <h2>Sudoku ( C )</h2>
+            <p>
+
+                <br>&nbsp;&nbsp;Contact administration for .exe program or github repo info
+            </p>
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/250px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png">
+        
+        </div>
+
+        <div class="content"> 
+            <!-- Enter all sub content elements here -->
+            <!-- Content Element 1 -->
+            <div class='contentA'>
+                <div class='contentElementA'>
+                    <br><br><br>
+                    <h2>Classic 9x9 Sudoku</h2>
+                    <p>
+                        This game of sudoku was inspired by a Computerphile video on youtube where they used a recursive algorithm to solve sudokus. Before I watched the video I attempted to write a program that solved sudokus in a deductive manor. Hundreds of lines later, I chose to watch the video and was amazed but the simpilicity and power of the algorithm Computerphile used.  
+                    </p>
+                    <p>
+                        The puzzles are solved by tying every combinitation of numbers starting in the top left corner and after every correct solution is found, the solver continues to check remaining values in order to check for extra solutions (Which a good sudoku should not have!)
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template: Required Components (See template.html) -->
+        <div class="logo"></div>
+        <div class="headerMain"></div>
+        <div class="searchBar"></div>
+        <div class="sideBar"></div>
+        <div class="footer"></div>
+    </div>
+
+<script>
+//Enter Page Specific Script Info Here
+
+</script>
+
+</body>
+</html>

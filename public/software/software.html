@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: Software
+    Author: Michael Pillon
+    Description: Landing page for software projects and games
+    
+    Notes: 
+    
+    *************************************************************************
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include the jquery library -->
+    <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
+
+    <!-- Include the processing.js library -->
+    <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/utilities.js"></script>
+    <script src="/components/navBar.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
+        #imageSnakeGameOld, #imageSoftwareSudoku {
+            max-width: 30%;
+            
+            border-radius: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="mainContent"> 
+            <div class="mainWindow">
+                <br><br>
+                <h2>Software</h2>
+                <br><br>
+                <div class ="mainP">
+                    <br>
+                    <h3>Welcome to your headquarters for software and games</h3>
+                    <h6><a class="plainLink" href="/software/serverSoftware.html">The Server</a></h6>
+                    <p>
+                        The heart of this project is the server. It powers everything hardware and software wise that is related to this project... but it is boring so it only gets a tiny space! Check it out at the link above, or scroll down to the fun stuff!
+                    </p>
+                    <p>
+                        See below for current as well as upcoming games: 
+                    </p>
+                    <br>
+                </div>
+                <br><br>
+                
+            </div>
+        </div>
+
+        <div class="content"> 
+            
+
+                <!-- Content Element 1 -->
+            <div class='contentB'>
+                <div class='contentElementB'>
+                    <br><br><br>
+                    <h2><a id="imageSoftwareSudoku" class="plainLink" href="/software/sudoku.html">Sudoku ( C )</a></h2>
+                    <h6>Online version coming soon, offline version is available now</h6>
+                    <img 
+                        id="imageSoftwareSudoku"
+                        src= "https://www.researchgate.net/profile/Rhydian_Lewis/publication/221411168/figure/fig1/AS:648961878654978@1531735977703/Example-of-an-order-3-Sudoku-puzzle-This-particular-grid-is-logic-solvable.png">
+                    <p>
+                        This game of sudoku was inspired by a Computerphile video on youtube where they used a recursive algorithm to solve sudokus. Before I watched the video I attempted to write a program that solved sudokus in a deductive manor. Hundreds of lines later, I chose to watch the video and was amazed but the simpilicity and power of the algorithm Computerphile used.  
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+
+            <!-- Content Element 2 -->
+            <div class='contentA'>
+                <div class='contentElementA'>
+                    <br><br><br>
+                    <h2><a class="plainLink" href="/software/snake.html">Snake ( Javascript )</a></h2>
+                    <h6>Coming: TBD</h6>
+                    <img 
+                        id="imageSnakeGameOld"
+                        src="data:image/jpeg;base64,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">
+                    <p>
+                        This game of snake is written in Javascript using the processingJS library and lessons learned on <i>Khan Academy</i>.
+                        Based off of the game I used to play on my parents ancient Nokia cell phones, this version of snake follows the basic rules, eat or be eaten! Eat the apples and watch out for your tail or the walls.
+                    </p>
+                    <br><br><br>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Template: Required Components (See template.html) -->
+        <div class="logo"></div>
+        <div class="headerMain"></div>
+        <div class="searchBar"></div>
+        <div class="sideBar"></div>
+        <div class="footer"></div>
+    </div>
+
+<script>
+//Enter Page Specific Script Info Here
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!-- class=".headerMain" -->
+
+<div class="mainNavBar">
+                
+    <img 
+    id="imagePELogo",
+    src='/images/pELogo1.png',
+    alt='PE'>
+                
+    <img id="imageSearchLogo"
+        src='/images/magGlass1.png'
+        alt='Mag Glass'
+        onclick="toggleSearchBar()">
+    
+    <a href="javascript:void(0)"
+        class="menuButton" 
+        id="menuButton" 
+        onclick="toggleMenu()"
+        >&#9776</a>
+       
+</div>
+
+<div class="navBar">
+
+    <a href="/other/other.html" 
+        id="other"  
+        onmouseover="navigateSubOn(this.id)" 
+        onmouseout="navigateSubOff(this.id)" 
+        >Other</a>
+    
+    <a href="/software/software.html" 
+        id="software" 
+        onmouseover="navigateSubOn(this.id)" 
+        onmouseout="navigateSubOff(this.id)" 
+        >Software</a>
+    
+    <a href="/projects/projects.html" 
+        id="projects"
+        onmouseover="navigateSubOn(this.id)"
+        onmouseout="navigateSubOff(this.id)" 
+        >Projects</a>
+    
+    <a href="/index.html" 
+        id="home"
+        >Home</a>
+
+</div>
+<div class="subNavBar">
+    
+    <div class="otherPages" 
+        onmouseover="navigateSubOn('other')"
+        onmouseout="navigateSubOff('other')">
+
+        <a href="/other/otherProjects.html"
+            id="otherProjects"
+            >Other Projects</a>
+        <a href="/other/prints.html" 
+            id="prints"
+            >3D Prints</a>
+    </div>
+
+    <div class="softwarePages"
+        onmouseover="navigateSubOn('software')"
+        onmouseout="navigateSubOff('software')">
+        <a href="/software/serverSoftware.html" 
+            id="server"
+            >Server</a>
+        <a href="/software/sudoku.html" 
+            id="sudoku"
+            >Sudoku ( C )</a>
+        <a href="/software/snake.html" 
+            id="snake"
+            >Snake ( Javascript )</a>
+    </div>
+    
+    <div class="projectsPages"
+        onmouseover="navigateSubOn('projects')"
+        onmouseout="navigateSubOff('projects')">
+        <a href="/projects/serverProject.html" 
+            id="server"
+            >Server</a>
+        <a href="/projects/ledDisplay.html" 
+            id="ledDisplay"
+            >LED Display</a>
+        <a href="/projects/piCamera.html" 
+            id="piCamera"
+            >Pi Camera</a>
+        <a href="/projects/threeDPrinter.html" 
+            >3D Printer</a>
+    </div>
+</div>
+<!-- EO class=".headerMain" -->
