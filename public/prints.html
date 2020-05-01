@@ -1,0 +1,77 @@
+<div class="mainWindow">
+  <br>
+  <div class="slideShowContainer">
+    <img id="imageSlideShow" onclick="popUpButton('open','imageSlideShow')">
+    <div id="slideShowText"></div>
+
+    <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
+    <a class="next" onclick="nextSlide(1)">&#10095;</a>
+  </div>
+    
+  <br>
+  <div id="dotContainer" style="text-align:center"></div>
+  <p id="numberText"></p>
+</div>  
+<br>
+<div class="mainP">
+  <div class="descriptions">
+    
+  </div>
+
+</div>
+
+
+<script>
+var printsData;
+var projectCount;
+var slideIndex = 0;
+
+initiateSlideShow = () => {
+  printsData.forEach( (value, index, array) => {
+    var newId = "dot" + index;
+    var $span = $("<span />").addClass("dot").attr('id', newId).on("click", () => {
+      changeSlide(index);
+    });
+    $("#dotContainer").append($span);
+  });
+  changeSlide(0);
+}
+nextSlide = (incrementValue) => {
+  slideIndex += incrementValue;
+  if ( slideIndex >= projectCount ) {
+    slideIndex = 0;
+  } else if ( slideIndex < 0 ) {
+    slideIndex = projectCount - 1;
+  }
+  changeSlide(slideIndex);
+}
+
+changeSlide = (newSlide) => {
+  slideIndex = newSlide;
+  $("#numberText").text( (newSlide + 1) + ' / ' + projectCount );
+  $("#imageSlideShow").attr('src', printsData[newSlide].mainImage);
+  $("#slideShowText").text(printsData[newSlide].title);
+  $('.descriptions').empty();
+  $('<p />').text(printsData[newSlide].description).appendTo('.descriptions');
+  for(let i = 0; i < projectCount; i++ ) {
+    if(i === newSlide) {
+      $("#dot" + i).addClass(' activeDot');
+    }
+    else {
+      $("#dot" + i).removeClass('activeDot');
+    }
+  }
+}
+
+$.ajax({
+  url: "prints/",
+  type: "GET",
+  success: (result, status, xhr) => {
+    printsData = result.prints;
+    projectCount = result.count;
+    initiateSlideShow();
+  }
+});//eo ajax
+
+</script>
+

@@ -1,0 +1,119 @@
+<style>
+    .sideBarNav a {
+        font-size: 26px;
+        color: rgb(150,150,150);
+    }
+
+    #dice {
+        color: rgb(150,150,150);
+        font-size: 120px;
+    }
+    #diceButton {
+        background-color:green;
+        border-color: darkgreen;
+        padding: 10px;
+    }
+    #randomText, #sideMyAccountText {
+        font-size: 14px;
+    }
+</style>
+<hr>
+<div class="sideBarNav">
+    <a id="random" onclick="swapSideBarElement('random')">&#9856</a>
+    <span>&nbsp&nbsp</span>
+    <a id="template" onclick="swapSideBarElement('template')">&#9783</a>
+    <span>&nbsp&nbsp</span>
+    <a id="sideMyAccount" onclick="swapSideBarElement('sideMyAccount')">&#10070</a>
+    <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+    <a id="closeSide" onclick="swapSideBarElement('closeSide')">&#10060</a>
+</div>
+<hr>
+<br>
+<div class="template" >
+    <h1>Side Bar H1</h1>
+    <h2>Side Bar H2</h2> 
+    <h3>Side Bar H3</h3>
+    <h4>Side Bar H4</h4>
+    <h5>Side Bar H5</h5>
+    <h6>Side Bar H6</h6>  
+    <p>Side Bar p</p> 
+    <br><br><br>   
+</div>
+<div class="random">
+    <H4>Random Page</h4>
+        <p id="randomText">- Will eventually have "random project" option which selects and displays one random thing from this website. The Dice won't be going anywhere, and more are coming!
+            <br><br>You feelin' lucky?!</p>
+    <p id="dice">&#9856</p>
+    <button id="diceButton" onclick='randomDice(5,5,1)'>Roll Them Dice!</button>
+    <br><br><br>
+</div>
+
+<div class="sideMyAccount">
+    <br>
+    <h6>Please login for My Account Side Panel features</h6>
+    <br>
+    <p id="sideMyAccountText">
+         
+        Monitor and control smart home devices directly while browsing the site or playing a game from the <i>Software</i> tab. Modular unit, focal point of login features, will eventually come with full screen and minimize to navigation panel options.
+        <br><br>
+        <h1>&#8634</h1>
+    </p>
+    <br><br><br>
+</div>
+
+
+<script>
+    swapSideBarElement = (panel) => {
+        $(".sideMyAccount").css("display", "none");
+        $(".template").css("display", "none");
+        $(".random").css("display", "none");
+        $("." + panel).css("display", "block");
+    }
+    randomDice = (totalTime, timeRemaining, i) => {
+        
+        $("#dice").css("color", "rgb(250,250,250)");
+
+        var x = Math.floor((Math.random() * 6) + 1);
+        switch(x) {
+            case 1:
+                $("#dice").html("&#9856");
+                $("#random").html("&#9856");
+                break;
+            case 2:
+                $("#dice").html("&#9857");
+                $("#random").html("&#9857");
+                break;
+            case 3:
+                $("#dice").html("&#9858");
+                $("#random").html("&#9858");
+                break;
+            case 4:
+                $("#dice").html("&#9859");
+                $("#random").html("&#9859");
+                break;
+            case 5:
+                $("#dice").html("&#9860");
+                $("#random").html("&#9860");
+                break;
+            case 6:
+                $("#dice").html("&#9861");
+                $("#random").html("&#9861");
+                break;
+        }
+
+        if( timeRemaining > 0 ) {
+            var interval = 0.01;
+            var result = totalTime * (1 - Math.exp(-i*interval/totalTime));
+            timeRemaining = timeRemaining - result;
+            i++;        
+            setTimeout( "randomDice(" + totalTime + ", " + timeRemaining + ", " + i + ");", result*1000);
+        } else {        
+            $("#dice").css("color", "dodgerblue");
+        }
+    }
+
+    //Initial Load of sideBar
+    swapSideBarElement("random");
+
+</script>
+

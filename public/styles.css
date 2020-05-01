@@ -1,0 +1,337 @@
+/* 
+CSS Grid Setup
+*/
+
+.logo { grid-area: logo; }
+.headerMain { 
+    grid-area: headerMain;
+    position: sticky;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    z-index: 5;
+}
+.searchBar {
+    grid-area: searchBar;
+    position: sticky;
+    display: none;
+    top: 50px;
+    height: 50px;
+    border-radius: 15px;
+    width: 40%;
+    z-index: 6;
+    background-color: rgb(175,175,175);
+}
+.sideBar { 
+    grid-area: sideBar; 
+    border-radius: 10px;
+    height: fit-content;
+    margin-top: 25px;
+    width: 100%;
+    background-color: rgb(170, 100, 0);
+}
+.mainContent { grid-area: mainContent; }
+.content { grid-area: content; }
+.footer { 
+    grid-area: footer; 
+    background-color: rgb(40, 40, 40);
+}
+.leftPadding { grid-area: leftPadding; }
+.rightPadding { grid-area: rightPadding; }
+.logoPadding { grid-area: logoPadding; }
+.wrapper {
+    display: grid;
+    grid-template-areas:
+    "logo"  
+    "headerMain"
+    "searchBar"
+    "mainContent"
+    "sideBar"
+    "content"
+    "footer"
+    "logoPadding"
+    "leftPadding"
+    "rightPadding";
+}
+/* 
+General Stylings
+*/
+body {
+    background-color: black;
+    box-sizing: border-box;
+
+    
+    background: url("/images/blueBackground.jpg") ;
+    background-size: cover; 
+    background-position: center top;
+    
+    font-family: Helvetica;
+    text-align: center;
+    margin: 0;
+}
+/*
+Mobile Stylings
+*/
+
+h1 {
+    color: dodgerblue;
+    font-size: 2.0rem;
+    margin: 0.25rem 0 0.25rem 0;
+}
+h2 {
+    color: goldenrod;
+    font-size: 1.5rem;
+    margin: 0.25rem 0 0.25rem 0;
+}
+h3 {
+    color: red;
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.25rem 0;
+}
+h4 {
+    color: rgb(18, 219, 18);
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.25rem 0;
+} 
+h5 {
+    color: rgb(207, 66, 0);
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.25rem 0;
+} 
+h6 {
+    color: goldenrod;
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.25rem 0;
+}
+p {
+    text-align: center;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0rem 0.5rem;
+    margin: 0.5rem;
+} 
+/* 
+Images - See login for site background styles
+*/
+.logo {
+    text-align: left;
+}
+#imageLogo {
+    height: auto;
+    max-width: 100%;
+}
+#imagePELogo {
+    opacity: 0.0;
+    position: absolute;
+    left: 0;
+    height: 45px;
+    transition: opacity 2s linear;
+    border-radius: 0 20px 20px 0;
+}
+#imageSearchLogo {
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 30px;
+    transition: 2s linear;
+}
+#imageContainer{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+}
+#imagePopUp {
+    position: fixed;
+    vertical-align: middle;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    z-index: 9;
+}
+
+
+/*
+Navigation Panel
+*/
+[onclick] {
+    cursor: pointer ;
+} 
+.mainNavBar {
+    background-color: rgb(40,40,40);
+    overflow: hidden;
+     
+}
+.subNavBar, .navBar  {
+    overflow: hidden;
+}
+
+.mainNavBar a, .navBar a , .subNavBar a {
+    
+    float: right;
+    font-size: 16px;
+    color: rgb(18, 219, 18);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+    background-color: rgb(40,40,40);
+}
+.subNavBar {
+    
+    float: center;
+}
+
+.navBar a:hover, .softwarePages a:hover, .projectsPages a:hover, .otherPages a:hover, #menuButton:hover {
+    background-color: rgb(0, 110, 0);
+    color: white;
+    
+
+}
+
+.softwarePages, .otherPages, .projectsPages {
+    float: right;
+    display: none;
+}
+.softwarePages a, .otherPages a, .projectPages a {
+    text-decoration: none;
+    display: block;
+ }
+
+ .active {
+    background-color: rgb(150, 0, 0) !important;
+    color: white !important;
+}
+
+
+
+/*
+Content
+*/
+.contentA {
+    margin: 20px auto;
+    background-color: rgb(30,40,30);
+}
+.contentB {
+    margin: 20px auto;
+}
+.mainWindow {
+    margin: 20px;
+    border-radius: 25px;
+    background-color: grey;
+}
+.mainP {
+    background-color: black;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/*
+Footer
+*/
+
+
+
+/* 
+SlideShow Styles
+ */
+.slideShowContainer {
+    width: 90%;
+    height: auto;  
+    position: relative;
+    margin: auto;
+}
+#imageSlideShow {
+    width: auto;
+    max-width: 100%;
+    max-height: 500px;
+    border-radius: 20px;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+.prev {
+    left:0; 
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.activeDot, .dot:hover {
+background-color: cornflowerblue;
+}
+/*
+Desktop Styles
+*/
+/* WIDTH DEPENDEDANT ON TRIGGER IN navigateMain() index.html */
+@media only screen and (min-width: 900px)  {             
+    body {
+        margin: 20px;
+    }  
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2.0rem; }
+    h4 { font-size: 2.0rem; } 
+    h5 { font-size: 1.5rem; } 
+    h6 { font-size: 1.5rem; }
+    p { font-size: 1.25rem; }
+
+    .wrapper {
+        grid-template-columns: 0 auto 300px 0;
+        grid-template-areas:
+        "logoPadding            logo            logo            logo"  
+        "headerMain                headerMain         headerMain         headerMain"
+        "searchBar              searchBar       searchBar       searchBar"
+        "leftPadding            mainContent     sideBar         rightPadding"
+        "content                content         content         content"
+        "footer                 footer          footer          footer";
+    }
+}
+@media only screen and (min-width: 1200px)  {
+    .contentElementA {
+        margin: auto;
+        max-width: 1000px;
+    }
+     
+    .contentB {
+        max-width: 1000px;
+    }
+    .wrapper {
+        grid-template-columns: auto 800px 300px auto;
+        grid-template-areas:
+            "logoPadding            logo            logo            logo"  
+            "headerMain                headerMain         headerMain         headerMain"
+            "searchBar              searchBar       searchBar       searchBar"
+            "leftPadding            mainContent     sideBar         rightPadding"
+            "content               content         content         content"
+            "footer                 footer          footer          footer";
+    }
+}

@@ -1,0 +1,15 @@
+#Files to ignore:
+nodemon.json
+uploads/*
+/public/images/*
+/ssl/*
+
+#Exception to the rule
+!uploads/.gitkeep
+!public/images/favicon.ico
+!/ssl/.gitkeep
+
+#Directories to ignore
+/node_modules/
+
+
