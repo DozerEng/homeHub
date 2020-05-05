@@ -1,52 +1,125 @@
-<style>
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: Pi Camera
+    Author: Michael Pillon
+    Description: Raspberry Pi Zero W with Camera - Multi function
+        - With 16 button num pad and LCD screen.
+    
+    Notes: 
+    
+    *************************************************************************
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include the jquery library -->
+    <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
+
+    <!-- Include the processing.js library -->
+    <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/utilities.js"></script>
+    <script src="/components/navBar.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
     #imageCamera1, #imageCamera2 {
         max-width: 150px;
     }
-</style>
+    </style>
 
-<div class="mainWindow">
-    <br>
-    <h2>Raspberry Pi Camera</h2>
-    <p>
-        The camera is the first addition to the Smart Life family since the capstone project ended. 
-        The goal of this device is to take the origional capstone devices running on a Raspberry Pi Zero W and integrate the 'Pi Camera' with as many practical features as possible.
-        A list of these features is given below:
-    </p>
-    
-    <img id="imageCamera1" src="/images/devices/cameraModelFront.png" onclick="popUpButton('open','imageCamera1')">
-    
-    <img id="imageCamera2" src="/images/devices/cameraSmallStand.png" onclick="popUpButton('open','imageCamera2')">  
+</head>
+<body>
+    <div class="wrapper">
 
-
-    <h6>Single Shot Mode</h6>
-    <p>
-        Signle shot mode takes a single photo and either saves it to the device, saves it to a usb drive, or e-mails the photo to a preset e-mail address.
-    </p>
-    
-    <h6>Time Lapse Mode</h6>
-    <p>
-        The user defines the amount of hours for the time lapse and the photos per hour. 
-        This information is used to create a series of photos which is stitched together into an mp4 video. 
-        The video is either saved to the device or to an external usb drive. 
-        All photos are deleted once the video is taken.
-    </p>
+        <div class="mainContent"> 
+            <div class="mainWindow">
+                <br>
+                <h2>Raspberry Pi Camera</h2>
+                <p>
+                    The camera is the first addition to the Smart Life family since the capstone project ended. 
+                    The goal of this device is to take the origional capstone devices running on a Raspberry Pi Zero W and integrate the 'Pi Camera' with as many practical features as possible.
+                    A list of these features is given below:
+                </p>
                 
-    <h6>Video Mode</h6>
-    <p>
-        Video mode takes a video.
-    </p>  
-    <h6>Security Mode</h6>
-    <p>
-        The device utilizes a motion sensor and will take a photo in a set ineteval so long as motion is detected. 
-        This photos are sent to the predefined e-mail as soon as they are taken.
-        <br><br>
-        Potential additions include a thermal sensor (for enhanced tracking), the ability to record video or take photos at will from a remote location, etc...
-    </p>
-    
-    <h6>Video Door Bell Mode</h6>
-    <p>
-        The device can be attached to the eyepiece of a door and can act as a video door bell. 
-    </p>
-    <br>
-    
-</div>
+                <img id="imageCamera1" src="/images/devices/cameraModelFront.png" onclick="popUpButton('open','imageCamera1')">
+                
+                <img id="imageCamera2" src="/images/devices/cameraSmallStand.png" onclick="popUpButton('open','imageCamera2')">  
+            
+            
+                <h6>Single Shot Mode</h6>
+                <p>
+                    Signle shot mode takes a single photo and either saves it to the device, saves it to a usb drive, or e-mails the photo to a preset e-mail address.
+                </p>
+                
+                
+                
+            </div>
+        </div>
+
+        <div class="content"> 
+            <!-- Enter all sub content elements here -->
+            <!-- Content Element 1 -->
+            <div class='contentA'>
+                <div class='contentElementA'>
+
+                    <h6>Time Lapse Mode</h6>
+                    <p>
+                        The user defines the amount of hours for the time lapse and the photos per hour. 
+                        This information is used to create a series of photos which is stitched together into an mp4 video. 
+                        The video is either saved to the device or to an external usb drive. 
+                        All photos are deleted once the video is taken.
+                    </p>
+                                
+                    <h6>Video Mode</h6>
+                    <p>
+                        Video mode takes a video.
+                    </p>  
+                </div>
+            </div>
+
+                <!-- Content Element 2 -->
+            <div class='contentB'>
+                <div class='contentA'>
+                    <h6>Security Mode</h6>
+                    <p>
+                        The device utilizes a motion sensor and will take a photo in a set ineteval so long as motion is detected. 
+                        This photos are sent to the predefined e-mail as soon as they are taken.
+                        <br><br>
+                        Potential additions include a thermal sensor (for enhanced tracking), the ability to record video or take photos at will from a remote location, etc...
+                    </p>
+                    
+                    <h6>Video Door Bell Mode</h6>
+                    <p>
+                        The device can be attached to the eyepiece of a door and can act as a video door bell. 
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template: Required Components (See template.html) -->
+        <div class="logo"></div>
+        <div class="headerMain"></div>
+        <div class="searchBar"></div>
+        <div class="sideBar"></div>
+        <div class="footer"></div>
+        <div class="utilities"></div>
+    </div>
+
+<script>
+
+</script>
+
+</body>
+</html>

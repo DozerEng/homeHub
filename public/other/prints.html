@@ -1,77 +1,148 @@
-<div class="mainWindow">
-  <br>
-  <div class="slideShowContainer">
-    <img id="imageSlideShow" onclick="popUpButton('open','imageSlideShow')">
-    <div id="slideShowText"></div>
-
-    <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
-    <a class="next" onclick="nextSlide(1)">&#10095;</a>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: 3D Prints
+    Author: Michael Pillon
+    Description: Assortments of 3D printed items.
+        - Many are original designs, many are from www.thingiverse.com
     
-  <br>
-  <div id="dotContainer" style="text-align:center"></div>
-  <p id="numberText"></p>
-</div>  
-<br>
-<div class="mainP">
-  <div class="descriptions">
+    Notes: 
     
+    *************************************************************************
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include the jquery library -->
+    <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
+
+    <!-- Include the processing.js library -->
+    <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/utilities.js"></script>
+    <script src="/components/navBar.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
+        
+    </style>
+
+</head>
+<body>
+  <div class="wrapper">
+
+    <div class="mainContent"> 
+      <div class="mainWindow">
+        <br>
+        <div class="slideShowContainer">
+          <img id="imageSlideShow" onclick="popUpButton('open','imageSlideShow')">
+          <div id="slideShowText"></div>
+      
+          <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
+          <a class="next" onclick="nextSlide(1)">&#10095;</a>
+        </div>
+          
+        <br>
+        <div id="dotContainer" style="text-align:center"></div>
+        <p id="numberText"></p>
+      </div>  
+      <br>
+      <div class="mainP">
+        <div class="descriptions">
+          
+        </div>
+      
+      </div>
+    </div>
+
+    <div class="content"> 
+        <!-- Enter all sub content elements here -->
+        <!-- Content Element 1 -->
+        <div class='contentA'>
+            <div class='contentElementA'>
+
+            </div>
+        </div>
+
+            <!-- Content Element 2 -->
+        <div class='contentB'>
+            <div class='contentElementB'>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Template: Required Components (See template.html) -->
+    <div class="logo"></div>
+    <div class="headerMain"></div>
+    <div class="searchBar"></div>
+    <div class="sideBar"></div>
+    <div class="footer"></div>
+    <div class="utilities"></div>
   </div>
-
-</div>
-
-
+</body>
 <script>
-var printsData;
-var projectCount;
-var slideIndex = 0;
-
-initiateSlideShow = () => {
-  printsData.forEach( (value, index, array) => {
-    var newId = "dot" + index;
-    var $span = $("<span />").addClass("dot").attr('id', newId).on("click", () => {
-      changeSlide(index);
+  var printsData;
+  var projectCount;
+  var slideIndex = 0;
+  
+  initiateSlideShow = () => {
+    printsData.forEach( (value, index, array) => {
+      var newId = "dot" + index;
+      var $span = $("<span />").addClass("dot").attr('id', newId).on("click", () => {
+        changeSlide(index);
+      });
+      $("#dotContainer").append($span);
     });
-    $("#dotContainer").append($span);
-  });
-  changeSlide(0);
-}
-nextSlide = (incrementValue) => {
-  slideIndex += incrementValue;
-  if ( slideIndex >= projectCount ) {
-    slideIndex = 0;
-  } else if ( slideIndex < 0 ) {
-    slideIndex = projectCount - 1;
+    changeSlide(0);
   }
-  changeSlide(slideIndex);
-}
-
-changeSlide = (newSlide) => {
-  slideIndex = newSlide;
-  $("#numberText").text( (newSlide + 1) + ' / ' + projectCount );
-  $("#imageSlideShow").attr('src', printsData[newSlide].mainImage);
-  $("#slideShowText").text(printsData[newSlide].title);
-  $('.descriptions').empty();
-  $('<p />').text(printsData[newSlide].description).appendTo('.descriptions');
-  for(let i = 0; i < projectCount; i++ ) {
-    if(i === newSlide) {
-      $("#dot" + i).addClass(' activeDot');
+  nextSlide = (incrementValue) => {
+    slideIndex += incrementValue;
+    if ( slideIndex >= projectCount ) {
+      slideIndex = 0;
+    } else if ( slideIndex < 0 ) {
+      slideIndex = projectCount - 1;
     }
-    else {
-      $("#dot" + i).removeClass('activeDot');
+    changeSlide(slideIndex);
+  }
+  
+  changeSlide = (newSlide) => {
+    slideIndex = newSlide;
+    $("#numberText").text( (newSlide + 1) + ' / ' + projectCount );
+    $("#imageSlideShow").attr('src', printsData[newSlide].mainImage);
+    $("#slideShowText").text(printsData[newSlide].title);
+    $('.descriptions').empty();
+    $('<p />').text(printsData[newSlide].description).appendTo('.descriptions');
+    for(let i = 0; i < projectCount; i++ ) {
+      if(i === newSlide) {
+        $("#dot" + i).addClass(' activeDot');
+      }
+      else {
+        $("#dot" + i).removeClass('activeDot');
+      }
     }
   }
-}
-
-$.ajax({
-  url: "prints/",
-  type: "GET",
-  success: (result, status, xhr) => {
-    printsData = result.prints;
-    projectCount = result.count;
-    initiateSlideShow();
-  }
-});//eo ajax
-
+  
+  $.ajax({
+    url: "../prints/",
+    type: "GET",
+    success: (result, status, xhr) => {
+      printsData = result.prints;
+      projectCount = result.count;
+      initiateSlideShow();
+    }
+  });//eo ajax
+  
 </script>
 
+
+</html>

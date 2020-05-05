@@ -1,101 +1,167 @@
-<div class="mainWindow">
-  <br>
-  <div class="slideShowContainer">
-<!-- 
-    <img class="imageSlideShow"> -->
-    <img id="imageSlideShow" onclick="popUpButton('open','imageSlideShow')">
-    <div id="slideShowText"></div>
-
-    <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
-    <a class="next" onclick="nextSlide(1)">&#10095;</a>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    *************************************************************************
+    Project Name: homeHub
+    Page Name: Other Projects
+    Author: Michael Pillon
+    Description: Collection of projects.
     
-  <br>
-  <div id="dotContainer" style="text-align:center"></div>
-  <p id="numberText"></p>
-</div>  
-<br>
-<div class="mainP">
-  <div class="descriptions">
+    Notes: 
     
-  </div>
+    *************************************************************************
+    -->
 
-</div>
-
-
-<script>
-var otherProjectsData;
-var projectCount;
-var slideIndex = 0;
-
-initiateSlideShow = () => {
-  otherProjectsData.forEach( (value, index, array) => {
-    //dot button set up with eventListener
-    var newId = "dot" + index;
-    var $span = $("<span />").addClass("dot").attr('id', newId).on("click", () => {
-      changeSlide(index);
-    });
-    $("#dotContainer").append($span);
-  });
-  changeSlide(0);
-}
-nextSlide = (incrementValue) => {
-  slideIndex += incrementValue;
-  if ( slideIndex >= projectCount ) {
-    slideIndex = 0;
-  } else if ( slideIndex < 0 ) {
-    slideIndex = projectCount - 1;
-  }
-  changeSlide(slideIndex);
-}
-
-changeSlide = (newSlide) => {
-  slideIndex = newSlide;
-  //Image Content
-  $("#numberText").text( (newSlide + 1) + ' / ' + projectCount );
-  $("#imageSlideShow").attr('src', otherProjectsData[newSlide].mainImage);
-  $("#slideShowText").text(otherProjectsData[newSlide].title);
-  //Description Content
-  $('.descriptions').empty();
-  $('<p />').text(otherProjectsData[newSlide].shortDescription).appendTo('.descriptions');
-  $('<p />').text(otherProjectsData[newSlide].longDescription).appendTo('.descriptions');
-  //Check for additional Images
-  if (otherProjectsData[newSlide].secondImage != "" ) {
-    $('<img />')
-      .attr('src', otherProjectsData[newSlide].secondImage)
-      .attr('id', 'imageOtherProjectsBody')
-      .on("click", () => {
-        popUpButton('open', 'imageOtherProjectsBody');
-      })
-      .appendTo('.descriptions');
-  }
-
-
-  //Update Active Dot
-  for(let i = 0; i < projectCount; i++ ) {
-    if(i === newSlide) {
-      $("#dot" + i).addClass(' activeDot');
-    }
-    else {
-      $("#dot" + i).removeClass('activeDot');
-    }
-  }
-}
-
-$.ajax({
-  url: "otherProjects/",
-  type: "GET",
-  success: (result, status, xhr) => {
-    otherProjectsData = result.otherprojects;
-    projectCount = result.count;
-    initiateSlideShow();
-  }
-});//eo ajax
-
-</script>
-<script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-  $(".content").append("<div class='contentA'> <div class='contentElementA'><br><br><br><p>Other Dynamic Content 1</p><br><br><br></div></div>");
-  $(".content").append("<div class='contentB'> <div class='contentElementB'><br><br><br><p>Other Dynamic Content 2 </p><br><br><br></div></div>");
-  $(".content").append("<div class='contentA'> <div class='contentElementA'><br><br><br><p>Other Dynamic Content 3</p><br><br><br></div></div>");
-</script>
+    <!-- Include the jquery library -->
+    <script type=text/javascript src="//code.jquery.com/jquery-1.7.1.min.js"></script> 
+
+    <!-- Include the processing.js library -->
+    <script src="//cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Components  -->
+    <script src="/components/utilities.js"></script>
+    <script src="/components/navBar.js"></script>
+    <script src="/components/initiateWebsite.js"></script>
+    <script src="/components/searchBar.js"></script>
+
+    <style>
+        
+    </style>
+
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="mainContent"> 
+          <div class="mainWindow">
+            <br>
+            <div class="slideShowContainer">
+              <img id="imageSlideShow" onclick="popUpButton('open','imageSlideShow')">
+              <div id="slideShowText"></div>
+          
+              <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
+              <a class="next" onclick="nextSlide(1)">&#10095;</a>
+            </div>
+              
+            <br>
+            <div id="dotContainer" style="text-align:center"></div>
+            <p id="numberText"></p>
+          </div>  
+          <br>
+          <div class="mainP">
+            <div class="descriptions">
+              
+            </div>
+          
+          </div>
+        </div>
+
+        <div class="content"> 
+            <!-- Enter all sub content elements here -->
+            <!-- Content Element 1 -->
+            <div class='contentA'>
+                <div class='contentElementA'>
+
+                </div>
+            </div>
+
+                <!-- Content Element 2 -->
+            <div class='contentB'>
+                <div class='contentElementB'>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Template: Required Components (See template.html) -->
+        <div class="logo"></div>
+        <div class="headerMain"></div>
+        <div class="searchBar"></div>
+        <div class="sideBar"></div>
+        <div class="footer"></div>
+        <div class="utilities"></div>
+    </div>
+
+
+    <script>
+      var otherProjectsData;
+      var projectCount;
+      var slideIndex = 0;
+      
+      initiateSlideShow = () => {
+        otherProjectsData.forEach( (value, index, array) => {
+          //dot button set up with eventListener
+          var newId = "dot" + index;
+          var $span = $("<span />").addClass("dot").attr('id', newId).on("click", () => {
+            changeSlide(index);
+          });
+          $("#dotContainer").append($span);
+        });
+        changeSlide(0);
+      }
+      nextSlide = (incrementValue) => {
+        slideIndex += incrementValue;
+        if ( slideIndex >= projectCount ) {
+          slideIndex = 0;
+        } else if ( slideIndex < 0 ) {
+          slideIndex = projectCount - 1;
+        }
+        changeSlide(slideIndex);
+      }
+      
+      changeSlide = (newSlide) => {
+        slideIndex = newSlide;
+        //Image Content
+        $("#numberText").text( (newSlide + 1) + ' / ' + projectCount );
+        $("#imageSlideShow").attr('src', otherProjectsData[newSlide].mainImage);
+        $("#slideShowText").text(otherProjectsData[newSlide].title);
+        //Description Content
+        $('.descriptions').empty();
+        $('<p />').text(otherProjectsData[newSlide].shortDescription).appendTo('.descriptions');
+        $('<p />').text(otherProjectsData[newSlide].longDescription).appendTo('.descriptions');
+        //Check for additional Images
+        if (otherProjectsData[newSlide].secondImage != "" ) {
+          $('<img />')
+            .attr('src', otherProjectsData[newSlide].secondImage)
+            .attr('id', 'imageOtherProjectsBody')
+            .on("click", () => {
+              popUpButton('open', 'imageOtherProjectsBody');
+            })
+            .appendTo('.descriptions');
+        }
+      
+      
+        //Update Active Dot
+        for(let i = 0; i < projectCount; i++ ) {
+          if(i === newSlide) {
+            $("#dot" + i).addClass(' activeDot');
+          }
+          else {
+            $("#dot" + i).removeClass('activeDot');
+          }
+        }
+      }
+      $.ajax({
+        url: "../otherProjects/",
+        type: "GET",
+        success: (result, status, xhr) => {
+          otherProjectsData = result.otherprojects;
+          projectCount = result.count;
+          initiateSlideShow();
+        },
+        error: (xhr, status, errorThrown) => {
+          console.log("Error: ", errorThrown);
+        }
+      });//eo ajax
+      
+      </script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@ popUpButton = (windowAction, popUpName) => {
 
     var popUpId = "#" + popUpName;
     var popUpClass = "." + popUpName;
-
+    
     if(windowAction === 'open') {   
         $(".backgroundCover").css('display', 'block');
         if(popUpName.match(/^image/)) {
@@ -96,9 +96,6 @@ Function: Loads specific component html
 
 loadComponentHTML = (component, page) => {
     
-    console.log("\nPage: " + page + "\n");
-    
-    console.log("\nComponent: " + component + "\n");
     $.ajax({
         url: "../components/" + page + ".html",
         type: "GET",

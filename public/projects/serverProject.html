@@ -35,10 +35,20 @@
         #serverHistory {
             list-style-position: inside;
         }
+        #serverProjectsHeader {
+            color: rgb(80, 82, 18);
+        }
         #serverHistory li {
-            color: rgb(219, 82, 18);
+            color: rgb(219, 82, 40);
             font-size: 20px;            
             padding: 5px;
+        }
+        #serverHistory li a {
+            text-decoration: none;
+            color: inherit;
+        }
+        #serverHistory li:hover {
+            color: black;
         }
         .featureList {
             list-style-position: inside;
@@ -55,6 +65,9 @@
         #projectsServerSoftware {
             color: rgb(50,50,200);
         }
+        #capstoneLink:hover, #projectsServerSoftware:hover {
+            color: rgb(20, 220, 20);
+        }
     </style>
 
 </head>
@@ -65,16 +78,16 @@
             <div class="mainWindow">
                 <!-- Enter main content elements here -->
                 
-                    <h2>Server ( Projects and Hardware )</h2>
+                    <h2 id="serverProjectsHeader">Server ( Projects and Hardware )</h2>
                     <br>
                 <p>
                     The backbone of this project has always been the NodeJS server. Originally, the server began on a BeagleboneBlack and has evolved many times to its current form on a Raspberry Pi 3. For a full software history, please visit the <a id="projectsServerSoftware" href="/software/serverSoftware.html">servers software page</a>. 
                     <br>
                     <ul id="serverHistory">
-                        <li><a href="#projectsHomeHub" class="plainLink">The Home Hub</a></li>
-                        <li><a href="#projectsProjectPortfolio" class="plainLink">Project Portfolio</a></li>
-                        <li><a href="#projectsSmartLife" class="plainLink">Smart Life</a></li>
-                        <li><a href="#projectsCapstone" class="plainLink">Fanshawe Capstone</a></li>
+                        <li><a href="#projectsHomeHub">The Home Hub</a></li>
+                        <li><a href="#projectsProjectPortfolio">Project Portfolio</a></li>
+                        <li><a href="#projectsSmartLife">Smart Life</a></li>
+                        <li><a href="#projectsCapstone">Fanshawe Capstone</a></li>
                     </ul>
                     <br><br>
                 </p>
@@ -176,6 +189,7 @@
         <div class="searchBar"></div>
         <div class="sideBar"></div>
         <div class="footer"></div>
+        <div class="utilities"></div>
     </div>
 
 <script>

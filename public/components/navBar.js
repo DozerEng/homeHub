@@ -21,6 +21,8 @@ toggleMenu = () => {
  
 Function: Handles loading of content onto website
 
+** Possibly no longer in use ** May 1 2020
+
 *************************************************************/
 
 navigateMain = (component, page) => {
@@ -50,9 +52,10 @@ navigateMain = (component, page) => {
             }
             
             $('.searchBar').css('display', 'none');
+        },
+        error: (xhr, status, errorThrown) => {
+            console.log("Error: ", errorThrown);
         }
-        //ToDo
-        //error handler:
     });
 }
 

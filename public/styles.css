@@ -56,6 +56,9 @@ CSS Grid Setup
 /* 
 General Stylings
 */
+html {
+    scroll-behavior: smooth;
+  }
 body {
     background-color: black;
     box-sizing: border-box;
@@ -69,6 +72,7 @@ body {
     text-align: center;
     margin: 0;
 }
+
 /* 
 Images - See login for site background styles
 */
@@ -134,11 +138,10 @@ Navigation Panel
     
     float: right;
     font-size: 16px;
-    color: rgb(18, 219, 18);
+    color: rgb(20, 220, 20);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    
     background-color: rgb(40,40,40);
 }
 .subNavBar {
@@ -149,9 +152,7 @@ Navigation Panel
 .navBar a:hover, .softwarePages a:hover, .projectsPages a:hover, .otherPages a:hover, #menuButton:hover {
     background-color: rgb(0, 110, 0);
     color: white;
-    
-
-}
+    }
 
 .softwarePages, .otherPages, .projectsPages {
     float: right;
@@ -170,7 +171,9 @@ Navigation Panel
     text-decoration: none;
     color: inherit;
 }
-
+.plainLink :hover {
+    color: rgb(20, 220, 20);
+}
 
 
 /*

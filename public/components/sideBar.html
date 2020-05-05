@@ -7,10 +7,18 @@
         margin: 5px;
         padding: 5px;
     }
-    #dice {
+    #dice0, #dice1, #dice2, #dice3, #dice4 {
         color: rgb(150,150,150);
-        margin: 5px;
+        margin: 0px;
+        padding: 0px;
         font-size: 120px;
+    }
+    #diceContainer {
+        margin: 0px;
+        padding: 0px;
+    }
+    #dice1, #dice2, #dice3, #dice4 {
+        display: none;
     }
     #diceButton {
         background-color:green;
@@ -48,8 +56,20 @@
     <H4>Random Page</h4>
         <p id="randomText">- Will eventually have "random project" option which selects and displays one random thing from this website. The Dice won't be going anywhere, and more are coming!
             <br><br>You feelin' lucky?!</p>
-    <p id="dice">&#9856</p>
-    <button id="diceButton" onclick='randomDice(5,5,1)'>Roll Them Dice!</button>
+    <p id="diceContainer">
+        <span  id="dice0">&#9856</span><span  id="dice1">&#9857</span></p>
+        <p><span  id="dice2">&#9858</span><span  id="dice3">&#9859</span><span  id="dice4">&#9860</span>
+    </p>
+    <button id="diceButton" onclick='rollDice()'>Roll Them Dice!</button>    
+    <p>Select # of Dice    
+        <select id="diceCount" onchange="onDiceChange()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </p>
     <br><br><br>
 </div>
 
@@ -73,52 +93,103 @@
         $(".template").css("display", "none");
         $(".random").css("display", "none");
         $("." + panel).css("display", "block");
+        sessionStorage.setItem("activeSidePanel", panel);
     }
-    randomDice = (totalTime, timeRemaining, i) => {
-        
-        $("#dice").css("color", "rgb(250,250,250)");
-
-        var x = Math.floor((Math.random() * 6) + 1);
-        switch(x) {
-            case 1:
-                $("#dice").html("&#9856");
-                $("#random").html("&#9856");
-                break;
-            case 2:
-                $("#dice").html("&#9857");
-                $("#random").html("&#9857");
-                break;
-            case 3:
-                $("#dice").html("&#9858");
-                $("#random").html("&#9858");
-                break;
-            case 4:
-                $("#dice").html("&#9859");
-                $("#random").html("&#9859");
-                break;
-            case 5:
-                $("#dice").html("&#9860");
-                $("#random").html("&#9860");
-                break;
-            case 6:
-                $("#dice").html("&#9861");
-                $("#random").html("&#9861");
-                break;
-        }
-
-        if( timeRemaining > 0 ) {
-            var interval = 0.01;
-            var result = totalTime * (1 - Math.exp(-i*interval/totalTime));
-            timeRemaining = timeRemaining - result;
-            i++;        
-            setTimeout( "randomDice(" + totalTime + ", " + timeRemaining + ", " + i + ");", result*1000);
-        } else {        
-            $("#dice").css("color", "dodgerblue");
+    //Trigger when dice menu count changes, select element
+    onDiceChange = () => {
+        var count = $("#diceCount").val();
+        sessionStorage.setItem("numberOfSideDice", count);
+        for(var i = 0; i < 5; i++) {
+            if (i < count ) {
+                $("#dice" + i).css("display", "inline-block");
+            } else {
+                $("#dice" + i).css("display", "none"); 
+                $("#dice" + i).css("color", "rgb(150,150,150)");
+            }
         }
     }
+    //Function to initiate a roll through randomDice()
+    rollDice = () => {
+        const count = $("#diceCount").val();
+        for(var i = 0; i < 5; i++) {
+            var startTime;
+            if (i < count ) {
+                startTime = Math.random() * 4.0 + 2.0; //between 2 and 6 second roll lengths
+                $("#dice" + i).css("color", "rgb(250,250,250)");
+                $("#dice" + i).css("display", "inline-block");
+                randomDice(startTime, i);
+            } else {
+                $("#dice" + i).css("display", "none");                
+            }
+            
+        }
+    }
+    //Recursive dice roller
+    randomDice = (timeRemaining, i) => {
+        $("#dice" + i).css("color", "rgb(250,250,250)");
+        if ( timeRemaining > 0.0 ) {   
+            var x = Math.floor((Math.random() * 6) + 1);
+            switch(x) {
+                case 1:
+                    $("#dice" + i).html("&#9856");
+                    if ( i == 0 ) $("#random").html("&#9856");
+                    break;
+                case 2:
+                    $("#dice" + i).html("&#9857");
+                    if ( i == 0 ) $("#random").html("&#9857");
+                    break;
+                case 3:
+                    $("#dice" + i).html("&#9858");
+                    if ( i == 0 ) $("#random").html("&#9858");
+                    break;
+                case 4:
+                    $("#dice" + i).html("&#9859");
+                    if ( i == 0 ) $("#random").html("&#9859");
+                    break;
+                case 5:
+                    $("#dice" + i).html("&#9860");
+                    if ( i == 0 ) $("#random").html("&#9860");
+                    break;
+                case 6:
+                    $("#dice" + i).html("&#9861");
+                    if ( i == 0 ) $("#random").html("&#9861");
+                    break;
+            }
+            
+            var ellapsedTime = Math.random() * 0.5 ; //between 0 and 0.5
+            timeRemaining = timeRemaining - ellapsedTime;
+            var rotation = ( 0.5 - Math.random() ) * 40 * ( timeRemaining /2); 
+            rotation = "rotate(" + rotation + "deg)";
+            $("#dice" + i).css("transform", rotation );
+            setTimeout( randomDice, ellapsedTime*1000, timeRemaining, i);
+        } else { 
+            $("#dice" + i).css("color", "dodgerblue");
+            $("#dice" + i).css("transform", "rotate(0deg)" );
+        }
+    }
+           
+    
 
     //Initial Load of sideBar
-    swapSideBarElement("random");
+    initiateDice = () => {
+        $("#diceCount").val(sessionStorage.getItem("numberOfSideDice"));
+        onDiceChange();
+        switch (sessionStorage.getItem('activeSidePanel')) {
+            case "sideMyAccount": 
+                swapSideBarElement("sideMyAccount");
+                break;
+            case "template": 
+                swapSideBarElement("template");
+                break;
+            case "random": 
+                swapSideBarElement("random");
+                break;
+            default:
+                swapSideBarElement("random");
+        }
+    }
+    initiateDice();
+
 
 </script>
 
